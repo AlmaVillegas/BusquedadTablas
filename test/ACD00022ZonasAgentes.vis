@@ -2,7 +2,7 @@
 Icono=0
 Clave=ACD00022ZonasAgentes
 Modulos=(Todos)
-ListaTablas=ACD00022ZonasAgentes, ABC
+ListaTablas=ACD00022ZonasAgentes
 TablaPrincipal=ACD00022ZonasAgentes
 UsoCapturas=S
 UsoReportes=S
