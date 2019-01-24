@@ -10,17 +10,22 @@ files.forEach(file => {
  if(fileType.isFile()){
   var texto = fs.readFileSync(path.join(ruta,file),{encoding:'latin1'}) 
  }
-    texto = texto.match(/^\[Vista\][\W\w]*?(?=(^\[|^$))/m)
-    console.log(texto)
-    //console.log(texto.match(/ListaTablas=\w*/gim))
-    //console.log(texto.match(/VistaIndependiente=\w*/gim))
-
-    fs.writeFile(nuevaCarpeta+file, file, texto, function (err) {
+     if(/\[Vista[\W\w]*?(?=(^\[|^$))/m.test(texto))
+        {
+            // fs.writeFileSync('test/texto.txt', texto)
+            let vista = texto.match(/\[Vista[\W\w]*?(?=^\[)/m).join('')
+            
+            fs.writeFileSync('test/vista.txt', vista)
+        }
+      //texto = texto.match(/^\[Vista[\W\w]*?(?=(^\[|^$))/m)
+      //texto = texto.match(/ListaTablas=\w*/gim)
+      //texto = texto.match(/VistaIndependiente=\w*/gim)
+      console.log(texto)
+      //console.log(texto.match(/ListaTablas=\w*/gim))
+      //console.log(texto.match(/VistaIndependiente=\w*/gim))
+     fs.writeFile(nuevaCarpeta+file, texto, function (err) {
         if (err) {
           return console.log(err)
         }
     })
 })
-
-
-
